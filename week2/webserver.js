@@ -6,6 +6,14 @@ var myLogger = function(req,res,next){
   console.log("LOGGED");
   next();
 }
+//create a cuntion that displays the timestamp of your request in the browser
+var requestTime = function(req,res,next){
+  req.requestTime=Date.now();
+  next();
+}
+//load the request time function
+app.use(requestTime);
+
 
 //load the middleware function
 app.use(myLogger);
