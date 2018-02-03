@@ -18,7 +18,7 @@ app.use(myLogger);
 //middleware functions that are loaded first are also executed first.
 app.get('/', function (req, res) {
   var responseText = "Hello World!<br>";
-  respontText+='<small>Requested at:'+req.requestTime+'</small>';
+  responseText+='<small>Requested at:'+req.requestTime+'</small>';
   res.send(responseText);
 })
 
