@@ -18,13 +18,7 @@ app.use(myLogger);
 //middleware functions that are loaded first are also executed first.
 
 //set Static path
-// app.use(express.static('public'));
-
-//set dynamic files
-app.get('/johan-deckmann',function(req,res){
-  var fileToSend = "johan-deckmann.txt";
-  res.sendfile(fileToSend,{root:'./public'});
-})
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   var responseText = "Hello World!<br>";
