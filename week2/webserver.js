@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: true }); // for parsing form data
+app.use(urlencodedParser); 
 
 //Every time the app receives a request, it prints the message “LOGGED” to the terminal.
 var myLogger = function(req,res,next){
