@@ -22,7 +22,7 @@ app.use(express.static('public'));
 
 app.get('/johan-deckmann', function (req, res) {
 	var fileToSend = "johan-deckmann.txt";
-	res.sendfile(fileToSend, {root: './public'}); // Files inside "public" folder
+	res.sendFile(fileToSend, {root: './public'}); // Files inside "public" folder
 });
 
 
