@@ -20,6 +20,12 @@ app.use(myLogger);
 //set Static path
 app.use(express.static('public'));
 
+app.get('/johan-deckmann', function (req, res) {
+	var fileToSend = "johan-deckmann.txt";
+	res.sendfile(fileToSend, {root: './public'}); // Files inside "public" folder
+});
+
+
 app.get('/', function (req, res) {
   var responseText = "Hello World!<br>";
   responseText+='<small>Requested at:'+req.requestTime+'</small>';
