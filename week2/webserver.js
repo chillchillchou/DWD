@@ -13,13 +13,13 @@ var requestTime = function(req,res,next){
 }
 //load the request time function
 app.use(requestTime);
-
-
 //load the middleware function
 app.use(myLogger);
 //middleware functions that are loaded first are also executed first.
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  var responseText = "Hello World!<br>";
+  respontText+='<small>Requested at:'+req.requestTime+'</small>';
+  res.send(responseText);
 })
 
 app.get('/somethingelse', function (req, res) {
