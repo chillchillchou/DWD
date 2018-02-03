@@ -18,7 +18,7 @@ app.use(myLogger);
 //middleware functions that are loaded first are also executed first.
 
 //set Static path
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   var responseText = "Hello World!<br>";
