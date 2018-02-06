@@ -49,7 +49,7 @@ app.get(
   console.log("They submitted:"+req.query.textfield);
   res.send("You submitted:"+req.query.textfield);
   thesubmissions.push(req.query.textfield);
-  res.redirect('/disply');
+  res.redirect('/disply');[]
 });
 
 app.get('/display',
