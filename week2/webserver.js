@@ -1,3 +1,6 @@
+var config = require("./config.js")
+var mongojs=require('mongojs');
+var db=mongojs("subuser:cho@s043350.mlab.com:43350/testdatabase")
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -23,7 +26,7 @@ app.use(urlencodedParser);
 //set Static path
 app.use(express.static('public'));
 
-//incoporate ejs
+//incoporate ejs, we are gonna use ejs as the view engine
 app.set('view engine','ejs');
 
 //set routhe for hello world and timestamp
