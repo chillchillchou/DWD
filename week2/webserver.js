@@ -46,7 +46,7 @@ app.get('/count', function (req, res) {
 app.get('/formpost',function(req,res){
 
   console.log("They submitted:"+req.query.truth);
-  var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote:" +req.query.truth+"</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>"
+  var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote: " +req.query.truth+"</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>"
   res.send(htmltoSend);
   thesubmissions.push(req.query.truth);
   res.redirect('/test');

@@ -31,4 +31,8 @@ form{
   margin:auto;
   padding:15px;
   border-color:#a27ee2;
+  border-width:3px;
+  background-color:black;
+  color:white;
+  font-size:1rem;
 }
