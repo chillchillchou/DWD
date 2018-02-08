@@ -23,33 +23,32 @@ app.use(urlencodedParser);
 //set Static path
 app.use(express.static('public'));
 
+//incoporate ejs
+app.set('view engine','ejs');
+
 //set routhe for hello world and timestamp
-app.get('/', function (req, res) {
-  var responseText = "Hello World!<br>";
-  responseText+='<small>Requested at:'+req.requestTime+'</small>';
-  res.send(responseText);
-})
+// app.get('/', function (req, res) {
+//   var responseText = "Hello World!<br>";
+//   responseText+='<small>Requested at:'+req.requestTime+'</small>';
+//   res.send(responseText);
+// })
 
 var count=0;
 var thesubmissions = [];
 
 
-app.get('/somethingelse', function (req, res) {
+app.get('/count', function (req, res) {
 //this is middleware
   count++;
-  res.send('<html><body><h1>something else!'+count+'</h1></body></html>');
+  res.send('<html><body><h1>You recieved'+count+'</h1></body></html>');
 });
 
-app.get(
-  //route
-  '/formpost',
+app.get('/formpost',function(req,res){
 
-  function(req,res){
-
-  console.log("They submitted:"+req.query.textfield);
-  res.send("You submitted:"+req.query.textfield);
-  thesubmissions.push(req.query.textfield);
-  res.redirect('/disply');[]
+  console.log("They submitted:"+req.query.truth);
+  res.send("You submitted:"+req.query.truth);
+  thesubmissions.push(req.query.truth);
+  res.redirect('/disply');
 });
 
 app.get('/display',
@@ -62,6 +61,11 @@ htmlout=htmlout+"</body></html>";
 res.send(htmlout);
 });
 
+//use ejs to return pages
+app.get('/test',function(req,res){
+  var answer = {truthAnswers:thesubmissions};
+  res.render('template.ejs',answer);
+})
 
 app.get('/johan-deckmann', function (req, res) {
 	var fileToSend = "johan-deckmann.txt";
