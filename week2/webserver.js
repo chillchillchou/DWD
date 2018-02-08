@@ -46,26 +46,27 @@ app.get('/count', function (req, res) {
 app.get('/formpost',function(req,res){
 
   console.log("They submitted:"+req.query.truth);
-  res.send("You submitted:"+req.query.truth);
+  var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote:" +req.query.truth+"</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>"
+  res.send(htmltoSend);
   thesubmissions.push(req.query.truth);
-  res.redirect('/disply');
+  res.redirect('/test');
 });
 
-app.get('/display',
-function(req,res){
-var htmlout="<html><body>";
-for (var i=0;i<thesubmissions.length;i++){
-  htmlout=htmlout+thesubmissions[i]+"<br>";
-}
-htmlout=htmlout+"</body></html>";
-res.send(htmlout);
-});
+// app.get('/display',
+// function(req,res){
+// var htmlout="<html><body>";
+// for (var i=0;i<thesubmissions.length;i++){
+//   htmlout=htmlout+thesubmissions[i]+"<br>";
+// }
+// htmlout=htmlout+"</body></html>";
+// res.send(htmlout);
+// });
 
 //use ejs to return pages
-app.get('/test',function(req,res){
+app.get('/display',function(req,res){
   var answer = {truthAnswers:thesubmissions};
   res.render('template.ejs',answer);
-})
+});
 
 app.get('/johan-deckmann', function (req, res) {
 	var fileToSend = "johan-deckmann.txt";
