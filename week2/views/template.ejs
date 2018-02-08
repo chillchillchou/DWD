@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="bookWrapper">
+    <div class="bookBg">
+      <div class="pageBg centerClass">
+        <div class="pageWrapper">
+          <% for (var i=0;i<truthAnswers.length;i++){ %>
+            <div class="page">
+              <div class="pageFace front">
+                <div>
+                  <h3>The Imcomplete Truth of Life</h3>
+                  <br><br><br><br><br>
+                  <%= truthAnswers[i] %>
+                    </br>
+                </div>
+                <div class="inputfield">
+                  <form method="GET" action="/formpost">
+                    <!-- <label for "truth"></label>
+                  <input type="text" cols="4" rows="5" id="truth" name="truth"> -->
+                    <p></p>
+                    <!-- <button class="button button4">Enter</button> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <form method="GET" action= "/"><button class= "button">Back</button></form>
+  </div>
+
+  <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+  <script src="index.js"></script>
+  <script src="scripts/pages.js"></script>
+</body>
+
+</html>
