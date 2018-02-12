@@ -1,6 +1,6 @@
 var config = require("./config.js")
-var mongojs=require('mongojs');
-var db=mongojs("subuser:cho@s043350.mlab.com:43350/testdatabase")
+// var mongojs=require('mongojs');
+// var db=mongojs("subuser:cho@s043350.mlab.com:43350/testdatabase")
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -52,7 +52,7 @@ app.get('/formpost',function(req,res){
   var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote: " +req.query.truth+"</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>"
   res.send(htmltoSend);
   thesubmissions.push(req.query.truth);
-  res.redirect('/test');
+  // res.redirect('/test');
 });
 
 // app.get('/display',
@@ -71,10 +71,10 @@ app.get('/display',function(req,res){
   res.render('template.ejs',answer);
 });
 
-app.get('/johan-deckmann', function (req, res) {
-	var fileToSend = "johan-deckmann.txt";
-	res.sendFile(fileToSend, {root: './public'}); // Files inside "public" folder
-});
+// app.get('/johan-deckmann', function (req, res) {
+// 	var fileToSend = "johan-deckmann.txt";
+// 	res.sendFile(fileToSend, {root: './public'}); // Files inside "public" folder
+// });
 
 
 
