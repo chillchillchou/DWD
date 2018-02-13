@@ -1,4 +1,4 @@
-var config = require("./config.js")
+//var config = require("./config.js")
 // var mongojs=require('mongojs');
 // var db=mongojs("subuser:cho@s043350.mlab.com:43350/testdatabase")
 var express = require('express');
