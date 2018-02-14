@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+body{
+background-color:black;
+}
+
+#showAnswer{
+  display:flex;
+  flex-direction: column;
+  width:70%;
+  margin:auto;
+  position:relative;
+  top:20%;
+}
+
+h1{
+color:white;
+text-align: center;
+font-family: 'Roboto Condensed'
+width:80%;
+margin:auto;
+font-size:36px;
+/* border: 3px solid green; */
+padding: 50px;
+}
+
+form{
+  display: flex;
+}
+
+.button{
+  margin:auto;
+  padding:15px;
+  border-color:#a27ee2;
+  border-width:3px;
+  background-color:black;
+  color:white;
+  font-size:1rem;
+}
