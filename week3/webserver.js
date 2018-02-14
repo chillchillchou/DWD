@@ -53,23 +53,25 @@ app.get('/formpost',function(req,res){
   res.send(htmltoSend);
   thesubmissions.push(req.query.truth);
   // res.redirect('/test');
+// });
+
+  db.truth.save({"truthAnswers":req.query.truth}, function(err, saved) {
+    if( err || !saved ) console.log("Not saved");
+    else console.log("Saved");
+  });
+
+  db.truth.find({}, function(err, saved) {
+    if (err || !saved) {
+    	console.log("No results");
+    }
+    else {
+    	saved.forEach(function(record) {
+      	console.log(record);
+    	});
+    }
+  });
 });
 
-db.truth.save({"truthAnswers":req.query.truth}, function(err, saved) {
-  if( err || !saved ) console.log("Not saved");
-  else console.log("Saved");
-});
-
-db.truth.find({}, function(err, saved) {
-  if (err || !saved) {
-  	console.log("No results");
-  }
-  else {
-  	saved.forEach(function(record) {
-    	console.log(record);
-  	});
-  }
-}
   	/* Alternatively you could loop through the records with a "for"
   	for (var i = 0; i < saved.length; i++) {
 	  	console.log(saved[i]);
