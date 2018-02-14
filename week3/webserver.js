@@ -69,14 +69,12 @@ db.truth.find({}, function(err, saved) {
     	console.log(record);
   	});
   }
-
+}
   	/* Alternatively you could loop through the records with a "for"
   	for (var i = 0; i < saved.length; i++) {
 	  	console.log(saved[i]);
 	}
 	*/
-  }
-
 // app.get('/display',
 // function(req,res){
 // var htmlout="<html><body>";
@@ -100,6 +98,6 @@ app.get('/display',function(req,res){
 
 
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
 })
