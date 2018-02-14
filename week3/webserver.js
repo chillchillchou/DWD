@@ -1,10 +1,12 @@
 var config = require("./config.js");
-var mongojs=require('mongojs');
-var db=mongojs("config.username:config.password@s043350.mlab.com:43350/testdatabase",['truth']);
+var mongojs = require('mongojs');
+var db = mongojs("config.username:config.password@ds043350.mlab.com:43350/testdatabase", ['truth']);
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: true }); // for parsing form data
+var urlencodedParser = bodyParser.urlencoded({
+  extended: true
+}); // for parsing form data
 app.use(urlencodedParser);
 
 //Every time the app receives a request, it prints the message “LOGGED” to the terminal.
@@ -27,7 +29,7 @@ app.use(urlencodedParser);
 app.use(express.static('public'));
 
 //incoporate ejs, we are gonna use ejs as the view engine
-app.set('view engine','ejs');
+app.set('view engine', 'ejs');
 
 //set routhe for hello world and timestamp
 // app.get('/', function (req, res) {
@@ -36,61 +38,56 @@ app.set('view engine','ejs');
 //   res.send(responseText);
 // })
 
-var count=0;
+var count = 0;
 var thesubmissions = [];
 
 
-app.get('/count', function (req, res) {
-//this is middleware
+app.get('/count', function(req, res) {
+  //this is middleware
   count++;
-  res.send('<html><body><h1>You recieved'+count+'</h1></body></html>');
+  res.send('<html><body><h1>You recieved' + count + '</h1></body></html>');
 });
 
-app.get('/formpost',function(req,res){
+app.get('/formpost', function(req, res) {
 
-  console.log("They submitted:"+req.query.truth);
-  var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote: " +req.query.truth+"</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>"
+  console.log("They submitted:" + req.query.truth);
+  var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote: " + req.query.truth + "</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>"
   res.send(htmltoSend);
   thesubmissions.push(req.query.truth);
   // res.redirect('/test');
-// });
+  // });
 
-  db.truth.save({"truthAnswers":req.query.truth}, function(err, saved) {
-    if( err || !saved ) console.log("Not saved");
+  db.truth.save({
+    "truthAnswers": req.query.truth
+  }, function(err, saved) {
+    if (err || !saved) console.log("Not saved");
     else console.log("Saved");
   });
 
-  db.truth.find({}, function(err, saved) {
-    if (err || !saved) {
-    	console.log("No results");
-    }
-    else {
-    	saved.forEach(function(record) {
-      	console.log(record);
-    	});
-    }
-  });
 });
 
-  	/* Alternatively you could loop through the records with a "for"
+/* Alternatively you could loop through the records with a "for"
   	for (var i = 0; i < saved.length; i++) {
 	  	console.log(saved[i]);
 	}
 	*/
-// app.get('/display',
-// function(req,res){
-// var htmlout="<html><body>";
-// for (var i=0;i<thesubmissions.length;i++){
-//   htmlout=htmlout+thesubmissions[i]+"<br>";
-// }
-// htmlout=htmlout+"</body></html>";
-// res.send(htmlout);
-// });
+
 
 //use ejs to return pages
-app.get('/display',function(req,res){
-  var answer = {truthAnswers:thesubmissions};
-  res.render('template.ejs',answer);
+app.get('/display', function(req, res) {
+  db.truth.find({}, function(err, saved) {
+    if (err || !saved) {
+      console.log("No results");
+    } else {
+      saved.forEach(function(record) {
+        console.log(record);
+        var answer = {
+          truthAnswers: thesubmissions
+        };
+        res.render('template.ejs', saved);
+      });
+    }
+  });
 });
 
 // app.get('/johan-deckmann', function (req, res) {
@@ -100,6 +97,6 @@ app.get('/display',function(req,res){
 
 
 
-app.listen(3000, function () {
+app.listen(3000, function() {
   console.log('Example app listening on port 3000!');
 })
