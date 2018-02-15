@@ -1,4 +1,4 @@
-var config = require("./config.js");
+var config = require('config.js');
 var mongojs = require('mongojs');
 var db = mongojs("config.username:config.password@ds043350.mlab.com:43350/testdatabase", ['truth']);
 var express = require('express');
@@ -77,10 +77,7 @@ app.get('/display', function(req, res) {
     } else {
       saved.forEach(function(record) {
         console.log(record);
-        var answer = {
-          truthAnswers: saved
-        };
-        res.render('template.ejs', answer);
+        res.render('template.ejs', {truthAnswers:saved});
       });
     }
   });
