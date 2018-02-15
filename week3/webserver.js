@@ -1,6 +1,6 @@
 var config = require('./config.js');
 var mongojs = require('mongojs');
-var db = mongojs("config.username:config.password@ds043350.mlab.com:43350/testdatabase", ['truth']);
+var db = mongojs("cho:woshinaochou4@ds043350.mlab.com:43350/testdatabase", ['truth']);
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -42,11 +42,11 @@ var count = 0;
 var thesubmissions = [];
 
 
-app.get('/count', function(req, res) {
-  //this is middleware
-  count++;
-  res.send('<html><body><h1>You recieved' + count + '</h1></body></html>');
-});
+// app.get('/count', function(req, res) {
+//   //this is middleware
+//   count++;
+//   res.send('<html><body><h1>You recieved' + count + '</h1></body></html>');
+// });
 
 app.get('/formpost', function(req, res) {
 
@@ -77,11 +77,27 @@ app.get('/display', function(req, res) {
     if (err || !saved) {
       console.log("No results");
     } else {
-      console.log(record);
+      console.log(saved);
       res.render('template.ejs', {
         truthAnswers: saved
       });
     }
+  });
+});
+
+app.get('/search', function(req, res) {
+  var query = new RegExp(req.query.key, 'i');
+  db.truth.find({
+      "truthAnswers": query
+    },
+    function(err, saved) {
+      if (err || !saved) {
+        console.log("No results");
+      } else {
+        res.render('template.ejs', {
+          truthAnswers: saved
+        });
+      }
   });
 });
 
