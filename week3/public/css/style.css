@@ -114,34 +114,7 @@ button {
 .back {
   background: linear-gradient(to right,  #ffffff 0%,#ffffff 92%,#f9f9f9 97%,#d9d9d9 100%);
 }
-.pageFoldRight {
-  position: absolute;
-    width:  0px;
-    height: 0px;
-    top:  0;
-    right: 0;
-    border-left-width: 1px;
-    border-left-color: #DDDDDD;
-    border-left-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #DDDDDD;
-    border-bottom-style: solid;
-    box-shadow: -5px 5px 10px #dddddd;
-}
-.pageFoldLeft {
-   position: absolute;
-    width:  0px;
-    height: 0px;
-    top:  0;
-    left: 0;
-    border-right-width: 1px;
-    border-right-color: #DDDDDD;
-    border-right-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #DDDDDD;
-    border-bottom-style: solid;
-    box-shadow: 5px 5px 10px #dddddd;
-}
+
 
 .page {
   transition: all 0.8s ease 0s, z-index 0.6s ease 0s;
