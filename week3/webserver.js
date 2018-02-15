@@ -90,6 +90,22 @@ app.get('/display', function(req, res) {
   });
 });
 
+
+app.get('/search', function(req, res) {
+  var query = new RegExp(req.query.q, 'i');
+  db.truth.find({
+      "truthAnswers": query
+    },
+    function(err, saved) {
+      if (err || !saved) {
+        console.log("No results");
+      } else {
+        res.render('result.ejs', {
+          truthAnswers: saved
+        });
+      }
+  });
+});
 // app.get('/johan-deckmann', function (req, res) {
 // 	var fileToSend = "johan-deckmann.txt";
 // 	res.sendFile(fileToSend, {root: './public'}); // Files inside "public" folder
