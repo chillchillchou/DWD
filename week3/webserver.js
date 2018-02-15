@@ -57,13 +57,10 @@ app.get('/formpost', function(req, res) {
   // res.redirect('/test');
   // });
 
-  db.truth.save({
-    "truthAnswers": req.query.truth
-  }, function(err, saved) {
+  db.truth.save({"truthAnswers": req.query.truth}, function(err, saved) {
     if (err || !saved) console.log("Not saved");
     else console.log("Saved");
   });
-
 });
 
 /* Alternatively you could loop through the records with a "for"
@@ -71,7 +68,6 @@ app.get('/formpost', function(req, res) {
 	  	console.log(saved[i]);
 	}
 	*/
-
 
 //use ejs to return pages
 app.get('/display', function(req, res) {
@@ -82,9 +78,9 @@ app.get('/display', function(req, res) {
       saved.forEach(function(record) {
         console.log(record);
         var answer = {
-          truthAnswers: thesubmissions
+          truthAnswers: saved
         };
-        res.render('template.ejs', saved);
+        res.render('template.ejs', answer);
       });
     }
   });
@@ -99,10 +95,6 @@ app.get('/display', function(req, res) {
 //     } );
 //   });
 // });
-
-
-
-
 
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!');
