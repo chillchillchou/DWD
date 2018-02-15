@@ -6,6 +6,7 @@ background-color:black;
 #showAnswer{
   display:flex;
   flex-direction: column;
+  align-items: center;
   width:70%;
   margin:auto;
   position:relative;
@@ -24,10 +25,10 @@ padding: 50px;
 }
 
 form{
-  display: flex;
+  /* display: flex; */
 }
 
-.button{
+button{
   margin:auto;
   padding:15px;
   border-color:#a27ee2;

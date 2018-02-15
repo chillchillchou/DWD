@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 
 body {
-  display:flex;
-  flex-direction: column;
+  /* display:flex;
+  flex-direction: column; */
   font-family:sans-serif;
   background-color: black;
 }
@@ -55,7 +55,7 @@ input{
   border-bottom:2px solid red; */
 }
 
-.button4 {
+button {
     background-color: white;
     color: black;
     border: 2px solid #e7e7e7;
@@ -164,6 +164,53 @@ input{
 }
 
 .footer{
+  width:60%;
   margin:auto;
+  /* display: flex;
+  flex-direction: row;
+  align-items: center; */
   /* width:20%; */
 }
+
+.search-button{
+  width:30%;
+  margin:auto;
+  padding:15px;
+  border-color:#a27ee2;
+  border-width:0px;
+  background-color:#a27ee2;
+  color:white;
+  font-size:1rem;
+  width:120px;
+}
+
+.search-text{
+  /* display:block; */
+  margin:auto;
+  position:relative;
+  width:70%;
+  padding:20px 20px;
+  border:none;
+  background:#9fa4bd52;
+  color:black;
+  border-radius:0px;
+  transition-property: initial;
+  transition-duration:0.3s;
+  transition-timing-function:ease;
+  transition-delay:initial;
+  border-sizing:border-box;
+  /* margin:8px 0;
+  box-sizing:border-box;
+  border:4%;
+  border-bottom:2px solid red; */
+}
+/* .search{
+  float:right;
+  padding:6px 10px;
+  margin-top:8px;
+  margin-right:16px;
+  background:#ddd;
+  font-size:18px;
+  border:none;
+  curser:ponter;
+} */
