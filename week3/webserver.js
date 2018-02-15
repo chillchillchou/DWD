@@ -57,7 +57,9 @@ app.get('/formpost', function(req, res) {
   // res.redirect('/test');
   // });
 
-  db.truth.save({"truthAnswers": req.query.truth}, function(err, saved) {
+  db.truth.save({
+    "truthAnswers": req.query.truth
+  }, function(err, saved) {
     if (err || !saved) console.log("Not saved");
     else console.log("Saved");
   });
@@ -75,9 +77,9 @@ app.get('/display', function(req, res) {
     if (err || !saved) {
       console.log("No results");
     } else {
-      saved.forEach(function(record) {
-        console.log(record);
-        res.render('template.ejs', {truthAnswers:saved});
+      console.log(record);
+      res.render('template.ejs', {
+        truthAnswers: saved
       });
     }
   });
