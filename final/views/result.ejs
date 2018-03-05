@@ -1,0 +1,81 @@
+<html>
+<head>
+  <title>Band Name Idea Pool</title>
+  <script type="text/javascript">
+    function setup() {
+      var datafromserver = "<%=colordata%>";
+    }
+    window.addEventListener('load', setup);
+  </script>
+  <style type="text/css">
+    body {
+      background-color: #283049;
+    }
+    div {
+      margin-top: 50px;
+      color: white;
+      font-family: Open Sans;
+      font-weight: Regular
+    }
+    a:link {
+      margin-top: 50px;
+      color: #ff7142;
+    }
+    a:visited {
+      margin-top: 50px;
+      color: #fc541d;
+    }
+    a:hover {
+      margin-top: 50px;
+      color: #ff7142;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 30px;
+      outline: none;
+    }
+    input[type="submit"] {
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #ff7142;
+      color: white;
+      font-family: Open Sans;
+      font-weight: Semi-Bold;
+      font-size: 18px;
+      outline: none;
+    }
+    input[type="submit"]:hover {
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #fc541d;
+      color: white;
+      font-family: Open Sans;
+      font-weight: Semi-Bold;
+      font-size: 18px;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div align="center">
+    <h1> Search Result </h1>
+    <form method="GET" action="/search">
+      <input type='text' name="q" value="Search the truths">
+      <input type="submit" name="submit" value="Search">
+    </form>
+  </div>
+  <div align="center">
+    <% for (var i = 0; i < truthAnswers.length; i++) { %>
+          <%= truthAnswers[i]%>
+
+          <br />
+      <% } %>
+      <a href="/form.html">Back</a>
+  </div>
+</body>
+</html>
