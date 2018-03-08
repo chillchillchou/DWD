@@ -61,18 +61,10 @@ app.get('/formpost', function(req, res) {
 
 });
 
-/* Alternatively you could loop through the records with a "for"
-  	for (var i = 0; i < saved.length; i++) {
-	  	console.log(saved[i]);
-	}
-	*/
-
-//use ejs to return pages
-
 
 app.get('/search', function(req, res) {
   var query = new RegExp(req.query.key, 'i');
-  db.truth.find({
+  db.yahoo.find({
       "truthAnswers": query
     },
     function(err, saved) {

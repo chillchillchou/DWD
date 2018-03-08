@@ -52,6 +52,10 @@
             <p class="pageIndex">
               <%= i+2 %>
             </p>
+            <form method="GET" action="/search" class="search-panel">
+              <input class="search-text" type='text' name='key' value='SEARCH..'>
+              <input class="search-button" type="submit" name="submit" value="GO">
+            </form>
           </div>
           <% } %>
             <div></div>
@@ -74,17 +78,14 @@
     //generate random background color
 
     $(document).ready(function() {
+      
       $('.p-container').each(function() {
         var hue = 'rgb(' + (Math.floor((256 - 199) * Math.random()) + 200) + ',' + (Math.floor((256 - 199) * Math.random()) + 200) + ',' + (Math.floor((256 - 199) * Math.random()) + 200) + ')';
         $(this).css("background-color", hue);
       });
     });
 
-    // $('.button').click(function(){
-    //   $("#text1").remove();
-    //   var newHTML="<div id=\"newEntry\"><textarea rows=\"40\" cols=\"30\">Enter Text Here...</textarea></div>"
-    //   $("#page1").append(newHTML);
-    // });
+    // $("#flipbook").turn({page:2});
 
     function loadApp() {
 

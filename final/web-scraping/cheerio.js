@@ -59,9 +59,7 @@ function gotHTML(err, resp, html) {
     }
     // answerURLs.push(split_answr);
     answerURLs.push($answer.text());
-    // db.truth.save({
-    //   "truthAnswers":split_answer
-    // })
+
     console.log("<br>");
   })
 
