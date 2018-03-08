@@ -1,9 +1,9 @@
 //submit comments
 
-$(".s_btn").click(function() {
+$(".s_text").keyup(function() {
     /*The val() method returns or sets the value attribute of the selected elements.*/
     /*set the value of text to the value of the input field*/
-    // if(event.keyCode == 13){
+    if(event.keyCode == 13){
 
 
     var text = $(".s_text").val();
@@ -21,7 +21,7 @@ $(".s_btn").click(function() {
     //执行init_barrage();动作
     init_barrage();
     $(".s_text").val('');
-  // }
+  }
 })
 
 //initialize barrage
@@ -46,11 +46,11 @@ function init_barrage() {
             color: getRandomColor()
         });
         //pop out texts in given time intervel
-        var time = 10000;
+        var time = 20000;
         /*idnex()方法返回指定元素相对于其他指定元素的index位置 index()除以2余数为0*/
         if ($(this).index() % 2 == 0) {
             /*则时间为15000*/
-            time = 15000;
+            time = 25000;
         }
         /*animate()方法执行css属性集的自定义动画。*/
         $(this).animate({

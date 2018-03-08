@@ -263,3 +263,25 @@ textarea {
   padding: 0;
   top: 570px;
 }
+
+.search-panel {
+  position: absolute;
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: flex;
+  justify-content: flex-start;
+	top:15px;
+}
+
+.search-text {
+  width: 300px;
+  border-style: none;
+  background-color: #ffffff4d;
+}
+
+.search-button {
+  width: 30px;
+  background-color:#56565642;
+  border-style: none;
+}
