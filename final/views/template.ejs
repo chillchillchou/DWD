@@ -7,8 +7,8 @@
   <script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
 </head>
 
-<body>
-  <div style="position:absolute;width:140px;left:46%;top:695px;z-index:999;float:left;">
+<body style="width:100%">
+  <div style="position:absolute;width:140px;left:46%;top:695px;z-index:999;float:left">
     <form method="GET" action="/new" style="position:absolute">
       <!-- <input type="text" id="textfield" name="truth"> -->
       <button class="button" id="addNew">Add New Page</button>
@@ -16,7 +16,7 @@
   </div>
   <div class="flipbook-viewport">
 
-    <div class="container">
+    <div class="container" style="display: none;">
       <div class="flipbook">
 
         <div id="content" style="background-image:url(pics/cover.png)"></div>
@@ -78,7 +78,6 @@
     //generate random background color
 
     $(document).ready(function() {
-      
       $('.p-container').each(function() {
         var hue = 'rgb(' + (Math.floor((256 - 199) * Math.random()) + 200) + ',' + (Math.floor((256 - 199) * Math.random()) + 200) + ',' + (Math.floor((256 - 199) * Math.random()) + 200) + ')';
         $(this).css("background-color", hue);
@@ -113,6 +112,8 @@
         autoCenter: true
 
       });
+
+      $('.container').fadeIn(1000)
     }
 
     // $(document).ready(function(){

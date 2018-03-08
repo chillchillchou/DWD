@@ -41,7 +41,7 @@ app.get('/', function(req, res) {
     } else {
       console.log(saved);
       res.render('template.ejs', {
-        truthAnswers: saved
+        truthAnswers: saved.reverse()
       });
     }
   });
@@ -97,6 +97,6 @@ app.get('/search', function(req, res) {
 //   });
 // });
 // var httpsServer = https.createServer(credentials, app);
-app.listen(4242, function() {
+app.listen(80, function() {
   console.log('Example app listening on port 4242!');
 })
