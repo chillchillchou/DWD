@@ -215,9 +215,14 @@ button {
   padding-bottom: 10px;
   padding-left: 25px;
   padding-right: 25px;
-  border-style: none;
-  background-color: #de8383;
-  color: white;
+  border-style: solid;
+  border-color: #de8383;
+  color: #de8383;
+}
+
+button:hover{
+  background-color:#de8383;
+  color:white;
 }
 
 #newEntry {
@@ -238,7 +243,7 @@ textarea {
   position: relative;
   left: 42%;
   top: -80px;
-  font-size: 24px
+  font-size: 18px
 }
 
 .returnPage {
