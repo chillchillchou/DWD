@@ -2,12 +2,12 @@
 var mongojs = require('mongojs');
 var db = mongojs("cho:woshinaochou4@ds235768.mlab.com:35768/truthbook", ['yahoo']);
 var express = require('express');
-var https = require('https');
-var fs = require('fs'); // Using the filesystem module
-var credentials = {
-  key: fs.readFileSync('my-key.pem'),
-  cert: fs.readFileSync('my-cert.pem')
-};
+// var https = require('https');
+// var fs = require('fs'); // Using the filesystem module
+// var credentials = {
+//   key: fs.readFileSync('my-key.pem'),
+//   cert: fs.readFileSync('my-cert.pem')
+// };
 
 var app = express();
 var bodyParser = require('body-parser');
@@ -96,7 +96,7 @@ app.get('/search', function(req, res) {
 //     } );
 //   });
 // });
-var httpsServer = https.createServer(credentials, app);
-httpServer.listen(443, function() {
-  console.log('Example app listening on port 443!');
+// var httpsServer = https.createServer(credentials, app);
+app.listen(3000, function() {
+  console.log('Example app listening on port 3000!');
 })
