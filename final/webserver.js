@@ -9,34 +9,12 @@ var urlencodedParser = bodyParser.urlencoded({
 }); // for parsing form data
 app.use(urlencodedParser);
 
-//Every time the app receives a request, it prints the message “LOGGED” to the terminal.
-// var myLogger = function(req,res,next){
-//   console.log("LOGGED");
-//   next();
-// }
-// //create a cuntion that displays the timestamp of your request in the browser
-// var requestTime = function(req,res,next){
-//   req.requestTime=Date.now();
-//   next();
-// }
-//load the request time function
-// app.use(requestTime);
-// //load the middleware function
-// app.use(myLogger);
-//middleware functions that are loaded first are also executed first.
 
 //set Static path
 app.use(express.static('public'));
 
 //incoporate ejs, we are gonna use ejs as the view engine
 app.set('view engine', 'ejs');
-
-//set routhe for hello world and timestamp
-// app.get('/', function (req, res) {
-//   var responseText = "Hello World!<br>";
-//   responseText+='<small>Requested at:'+req.requestTime+'</small>';
-//   res.send(responseText);
-// })
 
 var count = 0;
 var thesubmissions = [];
@@ -47,32 +25,7 @@ var thesubmissions = [];
 //   count++;
 //   res.send('<html><body><h1>You recieved' + count + '</h1></body></html>');
 // });
-
-app.get('/formpost', function(req, res) {
-
-  console.log("They submitted:" + req.query.truth);
-  var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote: " + req.query.truth + "</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>";
-  res.send(htmltoSend);
-  thesubmissions.push(req.query.truth);
-  // res.redirect('/test');
-  // });
-
-  db.yahoo.save({
-    "truthAnswers": req.query.truth
-  }, function(err, saved) {
-    if (err || !saved) console.log("Not saved");
-    else console.log("Saved");
-  });
-});
-
-/* Alternatively you could loop through the records with a "for"
-  	for (var i = 0; i < saved.length; i++) {
-	  	console.log(saved[i]);
-	}
-	*/
-
-//use ejs to return pages
-app.get('/display', function(req, res) {
+app.get('/', function(req, res) {
   db.yahoo.find({}, function(err, saved) {
     if (err || !saved) {
       console.log("No results");
@@ -84,6 +37,38 @@ app.get('/display', function(req, res) {
     }
   });
 });
+app.get('/new',function(req,res){
+  res.render('new.ejs');
+})
+
+app.get('/formpost', function(req, res) {
+
+  console.log("They submitted:" + req.query.textfield);
+  console.log(typeof(req.query.textfield))
+  // var htmltoSend = "<html><head><link rel=\"stylesheet\" href=\"css/submit.css\" ></head><body><div id=\"showAnswer\"><h1 style=\"margin:auto;width:50%\">You wrote: " + req.query.textfield + "</h1><form method=\"GET\" action=\"/\"><button class=\"button\">Back</button></form></div></body></html>";
+  // res.send(htmltoSend);
+  thesubmissions.push(req.query.textfield);
+  db.yahoo.save({
+    "truthAnswers": req.query.textfield
+  }, function(err, saved) {
+    if (err || !saved) console.log("Not saved");
+    else console.log("Saved");
+  });
+  res.render('result.ejs',{submission:req.query.textfield})
+  // res.redirect('/test');
+  // });
+
+
+});
+
+/* Alternatively you could loop through the records with a "for"
+  	for (var i = 0; i < saved.length; i++) {
+	  	console.log(saved[i]);
+	}
+	*/
+
+//use ejs to return pages
+
 
 app.get('/search', function(req, res) {
   var query = new RegExp(req.query.key, 'i');

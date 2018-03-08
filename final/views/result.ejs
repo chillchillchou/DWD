@@ -1,81 +1,101 @@
-<html>
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
 <head>
-  <title>Band Name Idea Pool</title>
-  <script type="text/javascript">
-    function setup() {
-      var datafromserver = "<%=colordata%>";
-    }
-    window.addEventListener('load', setup);
-  </script>
-  <style type="text/css">
-    body {
-      background-color: #283049;
-    }
-    div {
-      margin-top: 50px;
-      color: white;
-      font-family: Open Sans;
-      font-weight: Regular
-    }
-    a:link {
-      margin-top: 50px;
-      color: #ff7142;
-    }
-    a:visited {
-      margin-top: 50px;
-      color: #fc541d;
-    }
-    a:hover {
-      margin-top: 50px;
-      color: #ff7142;
-    }
-    input[type="text"] {
-      width: 300px;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 30px;
-      outline: none;
-    }
-    input[type="submit"] {
-      border-radius: 5px;
-      padding: 10px;
-      margin-top: 10px;
-      background-color: #ff7142;
-      color: white;
-      font-family: Open Sans;
-      font-weight: Semi-Bold;
-      font-size: 18px;
-      outline: none;
-    }
-    input[type="submit"]:hover {
-      border-radius: 5px;
-      padding: 10px;
-      margin-top: 10px;
-      background-color: #fc541d;
-      color: white;
-      font-family: Open Sans;
-      font-weight: Semi-Bold;
-      font-size: 18px;
-      outline: none;
-    }
-  </style>
+	<meta name="viewport" content="width = 1050, user-scalable = no" />
+	<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+	<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+	<link rel="stylesheet" href="css/input.css">
 </head>
 
 <body>
-  <div align="center">
-    <h1> Search Result </h1>
-    <form method="GET" action="/search">
-      <input type='text' name="q" value="Search the truths">
-      <input type="submit" name="submit" value="Search">
-    </form>
-  </div>
-  <div align="center">
-    <% for (var i = 0; i < truthAnswers.length; i++) { %>
-          <%= truthAnswers[i]%>
 
-          <br />
-      <% } %>
-      <a href="/form.html">Back</a>
-  </div>
+	<div class="flipbook-viewport">
+		<div class="container">
+			<div class="flipbook">
+				<div class="p-container returnPage">
+					<p>
+						<%= submission %>
+					</p>
+					<div class="twoButtons">
+						<form method="GET" action="/" style="width:100%">
+							<button style="width:150px">Back To Book</button>
+						</form>
+						<<form method="GET" action="/new" style="width:100%">
+							<button style="width:140px">Add New</button>
+							</form>
+					</div>
+				</div>
+
+				<div></div>
+				<!-- <div style="background-image:url(pages/9.jpg)"></div>
+				<div style="background-image:url(pages/10.jpg)"></div>
+				<div style="background-image:url(pages/11.jpg)"></div>
+				<div style="background-image:url(pages/12.jpg)"></div> -->
+				onchange="" </div>
+		</div>
+	</div>
+
+	<script src="js/input.js"></script>
+	<script type="text/javascript">
+		//generate random background color
+
+
+		$(document).ready(function() {
+
+		});
+
+		$("#submit").click(function() {
+			$("#newEntry form").remove
+		})
+
+
+
+		function loadApp() {
+
+			// Create the flipbook
+
+			$('.flipbook').turn({
+				// Width
+
+				width: 922,
+
+				// Height
+
+				height: 600,
+
+				// Elevation
+
+				elevation: 50,
+
+				// Enable gradients
+
+				gradients: true,
+
+				// Auto center this flipbook
+
+				autoCenter: true
+
+			});
+		}
+
+		// Load the HTML4 version if there's not CSS transform
+
+		yepnope({
+			test: Modernizr.csstransforms,
+			yep: ['lib/turn.js'],
+			nope: ['lib/turn.html4.min.js'],
+			both: ['css/basic.css'],
+			complete: loadApp
+		});
+	</script>
+
 </body>
+
 </html>
