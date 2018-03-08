@@ -1,4 +1,4 @@
-var config = require('./config.js');
+//var config = require('./config.js');
 var mongojs = require('mongojs');
 var db = mongojs("cho:woshinaochou4@ds043350.mlab.com:43350/testdatabase", ['truth']);
 var express = require('express');
