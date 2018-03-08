@@ -97,7 +97,6 @@ app.get('/search', function(req, res) {
 //   });
 // });
 var httpsServer = https.createServer(credentials, app);
-
-app.listen(8080, function() {
-  console.log('Example app listening on port 3000!');
+httpServer.listen(443, function() {
+  console.log('Example app listening on port 443!');
 })
